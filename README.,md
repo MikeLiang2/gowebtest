@@ -1,15 +1,125 @@
-# Go Web Test: Server-Client Messaging in LAN
+当然可以，以下是**完整的一整段 README.md 文件内容**，你可以直接复制粘贴使用：
 
-This project demonstrates how to send a message between two Go programs over HTTP in a local network.
+---
 
-## Project Structure
+```markdown
+# Go Web Test: Gin vs Echo vs Beego
 
-- `server/` — Listens on port 8080 and prints received messages
-- `client/` — Sends GET request with a message to the server
+This project demonstrates how to use different Go web frameworks — **Gin**, **Echo**, and **Beego** — to build a simple message-receiving server.
+
+Each server:
+- Listens on port `8080`
+- Accepts a `GET` request with a `msg` query parameter
+- Logs the message on the terminal
+- Responds to the client with a confirmation message
+
+---
+
+## Directory Structure
+
+```
+
+gowebtest/
+├── go.mod
+├── server/
+│   ├── main.go              # Entry point — choose which framework to run
+│   ├── gin\_server.go        # Gin example
+│   ├── echo\_server.go       # Echo example
+│   └── beego\_server.go      # Beego example
+└── client/
+└── main.go              # Sends a message to the server
+
+````
+
+---
 
 ## How to Run
 
-### Server Side (on machine A)
+### 1. Install dependencies
+
+```bash
+go mod tidy
+````
+
+### 2. Run a server (choose only one at a time)
+
+#### Option A: Run entire folder (recommended)
+
 ```bash
 cd server
+go run .
+```
+
+Then, in `main.go`, activate the framework you want:
+
+```go
+func main() {
+    startGinServer()
+    // startEchoServer()
+    // startBeegoServer()
+}
+```
+
+#### Option B: Run individual server file directly
+
+```bash
+go run gin_server.go         # or echo_server.go / beego_server.go
+```
+
+> Only one `main()` function should be active per run.
+
+---
+
+## How to Test
+
+### In browser or with curl:
+
+```
+http://localhost:8080/?msg=HelloFromBrowser
+```
+
+### Or using the client:
+
+```bash
+cd client
 go run main.go
+```
+
+Client output:
+
+```
+Server replied: Hello Client, I got: HelloFromClient
+```
+
+Server output:
+
+```
+Received: HelloFromClient
+```
+
+---
+
+## 🧪 Framework Comparison Summary
+
+| Framework | Style            | Advantages                          | Use Cases                |
+| --------- | ---------------- | ----------------------------------- | ------------------------ |
+| **Gin**   | Functional, Fast | Simple syntax, great performance    | REST APIs, microservices |
+| **Echo**  | Functional, Rich | Middleware, HTTP/2, WebSocket       | Secure APIs, web apps    |
+| **Beego** | OOP (MVC)        | Full-stack, ORM, logs, auto routing | Enterprise apps          |
+
+---
+
+## 📦 Dependencies
+
+* [Gin](https://github.com/gin-gonic/gin)
+* [Echo](https://github.com/labstack/echo)
+* [Beego](https://github.com/beego/beego)
+
+---
+
+## 📌 Author
+
+Mike Liang
+[https://github.com/MikeLiang2](https://github.com/MikeLiang2)
+
+```
