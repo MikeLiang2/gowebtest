@@ -2,17 +2,18 @@ package main
 
 import (
 	"fmt"
+	"io/ioutil"
 	"net/http"
 )
 
-func handler(w http.ResponseWriter, r *http.Request) {
-	msg := r.URL.Query().Get("msg")
-	fmt.Println("Received:", msg)
-	fmt.Fprintf(w, "Hello Client, I got: %s", msg)
-}
-
+// This is a simple HTTP client that sends a GET request to the server
 func main() {
-	http.HandleFunc("/", handler)
-	fmt.Println("Server running at :8080")
-	http.ListenAndServe(":8080", nil)
+	resp, err := http.Get("http://192.168.1.100:8080/?msg=PingFromClient")
+	if err != nil {
+		panic(err)
+	}
+	defer resp.Body.Close()
+
+	body, _ := ioutil.ReadAll(resp.Body)
+	fmt.Println("Server replied:", string(body))
 }
