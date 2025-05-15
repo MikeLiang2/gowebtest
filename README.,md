@@ -8,7 +8,6 @@ Each server:
 - Logs the message on the terminal
 - Responds to the client with a confirmation message
 
----
 
 ## Directory Structure
 
@@ -23,7 +22,6 @@ gowebtest/
     └── main.go              # Sends a message to the server
 
 
----
 
 ## How to Run
 
@@ -53,7 +51,6 @@ go run gin_server.go         # or echo_server.go / beego_server.go
 
 > Only one `main()` should be active at a time.
 
----
 
 ### 3. Test the server
 
@@ -77,7 +74,6 @@ Server terminal will log:
 Received: HelloFromClient
 
 
----
 
 ## Framework Comparison Summary
 
@@ -87,7 +83,6 @@ Received: HelloFromClient
 | **Echo**  | Functional, Rich | Middleware, HTTP/2, WebSocket   | Secure APIs, web apps    |
 | **Beego** | OOP (MVC)        | Full-stack, ORM, logs, router    | Enterprise apps          |
 
----
 
 ## Dependencies
 
@@ -95,7 +90,6 @@ Received: HelloFromClient
 - [Echo](https://github.com/labstack/echo)
 - [Beego](https://github.com/beego/beego)
 
----
 
 ## Author
 
