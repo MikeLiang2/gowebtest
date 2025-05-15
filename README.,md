@@ -1,0 +1,15 @@
+# Go Web Test: Server-Client Messaging in LAN
+
+This project demonstrates how to send a message between two Go programs over HTTP in a local network.
+
+## Project Structure
+
+- `server/` — Listens on port 8080 and prints received messages
+- `client/` — Sends GET request with a message to the server
+
+## How to Run
+
+### Server Side (on machine A)
+```bash
+cd server
+go run main.go
